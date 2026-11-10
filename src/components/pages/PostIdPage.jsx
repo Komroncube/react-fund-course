@@ -7,25 +7,26 @@ import Loader from "../UI/Loader/Loader";
 const PostIdPage = () => {
     const params = useParams();
     const [post, setPost] = useState({});
-    const [fetchPost, isLoading, error] = useFetching(async (id) => {
+    const [fetchPostById, isLoading, error] = useFetching(async (id) => {
         const response = await PostService.getById(id);
         setPost(response.data);
-    })
+    });
 
     useEffect(() => {
-        fetchPost(params.id);
-    }, [])
-    return ( 
+        fetchPostById(params.id);
+    }, []);
+    return (
         <div>
             <h1>You opened {params.id}</h1>
-            {
-                isLoading 
-                ? <Loader />
-                : <p>{post.id}. {post.title}</p>
-            }
-            
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <p>
+                    {post.id}. {post.title}
+                </p>
+            )}
         </div>
-     );
-}
- 
+    );
+};
+
 export default PostIdPage;

@@ -1,10 +1,10 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router";
 
 const PostItem = function (props) {
     const navigate = useNavigate();
-    console.log(navigate)
+    console.log(navigate);
     return (
         <div className="post">
             <div className="post__content">
